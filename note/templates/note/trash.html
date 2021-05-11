@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Note</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Trash
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                    </div>
+                </div>
+            </article>
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <ul>
+                            {% for trash in trashes %}
+                            <p></p>
+                                <li>
+                                    <strong>{{ trash.title }}</strong>
+                                    <p>{{ trash.text }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'note:home' %}" style = 'font-weight: bold;' >Go Back</a>
+                        <form action="/clear/"
+                            style="display: inline;"
+                            method="post">{% csrf_token %}
+                            <input type="submit" value="Clear Trash"/>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>

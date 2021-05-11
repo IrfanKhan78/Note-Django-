@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Note</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Details
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <form action="/delete/{{details.id}}/", method="POST">
+            {% csrf_token %}
+        <div class="container">
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                    </div>
+                </div>
+            </article>
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <h1><u>{{ details.title}}</u></h1>
+                        <strong style="font-size: 15px; color: gray;">Date created: {{ details.date_created }}</strong>
+                        <p></p>
+                        <p style="font-size: 20px; color: black; font-weight: bold">
+                            {{ details.text }}
+                        </p>
+                        <a href="{% url 'note:home' %}" style = 'font-weight: bold;' >Go Back</a>
+                        <br><button class="button is-link" style = 'margin-left: 1000px;'>Delete</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+        </form>
+
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>
